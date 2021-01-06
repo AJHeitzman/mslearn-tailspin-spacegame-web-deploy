@@ -18,7 +18,7 @@ stages:
   displayName: 'Build the web application'
   jobs: 
   - job: 'Build'
-    displayName: 'Build job'
+    displayName: 'Build Application'
     pool:
       vmImage: 'ubuntu-18.04'
       demands:
@@ -84,7 +84,9 @@ stages:
       eq(variables['Build.SourceBranchName'], variables['releaseBranchName'])
     )
   jobs:
-  - deployment: Deploy
+  - job: 'Deploy'
+    displayName: 'Deploy To Dev'
+    deployment: Deploy
     pool:
       vmImage: 'ubuntu-18.04'
     environment: dev
