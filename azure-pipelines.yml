@@ -110,7 +110,7 @@ stages:
   #condition: eq(variables['Build.Reason'], 'Schedule')
   jobs:
   - deployment: Deploy
-  displayName: 'Deploy To Test'
+    displayName: 'Deploy To Test'
     pool:
       vmImage: 'ubuntu-18.04'
     environment: test
@@ -128,13 +128,13 @@ stages:
               azureSubscription: 'Resource Manager - Tailspin - Space Game'
               appName: '$(WebAppNameTest)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
-              
+
 - stage: 'Staging'
   displayName: 'Deploy to the staging environment'
   dependsOn: Test
   jobs:
   - deployment: Deploy
-  displayName: 'Deploy To Staging'
+    displayName: 'Deploy To Staging'
     pool:
       vmImage: 'ubuntu-18.04'
     environment: staging
